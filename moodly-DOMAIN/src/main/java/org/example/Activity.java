@@ -4,8 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class MoodEntry {
-
+public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,21 +13,21 @@ public class MoodEntry {
     @ManyToOne
     private User user;
 
-    private boolean mood;
+    private String name; // nom de l'activité (ex : course, lecture...)
 
-    private String description;
+    private Integer duration; // minutes
 
-    private LocalDate date ;
+    private LocalDate date;
 
 
-    public MoodEntry(User user, boolean mood, String description, LocalDate date) {
+    public Activity(User user, String name, Integer duration, LocalDate date) {
         this.user = user;
-        this.mood = mood;
-        this.description = description;
+        this.name = name;
+        this.duration = duration;
         this.date = date;
     }
 
-    public MoodEntry() {
+    public Activity() {
     }
 
     public void setId(Long id) {
@@ -47,20 +46,20 @@ public class MoodEntry {
         this.user = user;
     }
 
-    public boolean isMood() {
-        return mood;
+    public String getName() {
+        return name;
     }
 
-    public void setMood(boolean mood) {
-        this.mood = mood;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public Integer getDuration() {
+        return duration;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
     public LocalDate getDate() {
