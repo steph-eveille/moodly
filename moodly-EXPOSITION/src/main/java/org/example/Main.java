@@ -1,13 +1,13 @@
-package com.example.moodly;
+package org.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MoodlyApplication {
+public class Main {
 
     public static void main(String[] args) {
-        SpringApplication.run(MoodlyApplication.class, args);
+        SpringApplication.run(Main.class, args);
     }
 
 }

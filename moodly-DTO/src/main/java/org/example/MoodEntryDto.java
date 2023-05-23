@@ -1,18 +1,11 @@
 package org.example;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-public class MoodEntry {
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MoodEntryDto {
     private Long id;
 
-    @ManyToOne
-    private MoodlyUser user;
+    private MoodlyUserDto user;
 
     private boolean mood;
 
@@ -20,37 +13,34 @@ public class MoodEntry {
 
     private LocalDate date ;
 
-
-    public MoodEntry(MoodlyUser user, boolean mood, String description, LocalDate date) {
+    public MoodEntryDto(Long id, MoodlyUserDto user, boolean mood, String description, LocalDate date) {
+        this.id = id;
         this.user = user;
         this.mood = mood;
         this.description = description;
         this.date = date;
     }
 
-    public MoodEntry() {
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public MoodEntryDto() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public MoodlyUser getUser() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public MoodlyUserDto getUser() {
         return user;
     }
 
-    public void setUser(MoodlyUser user) {
+    public void setUser(MoodlyUserDto user) {
         this.user = user;
     }
 
     public boolean isMood() {
-        return mood;
-    }
-    public boolean getMood() {
         return mood;
     }
 

@@ -1,17 +1,12 @@
 package org.example;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-public class Activity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ActivitySummaryDto {
     private Long id;
 
-    @ManyToOne
-    private MoodlyUser user;
+
+    private String userEmail;
 
     private String name; // nom de l'activité (ex : course, lecture...)
 
@@ -19,18 +14,18 @@ public class Activity {
 
     private LocalDate date;
 
-    @OneToOne
-    private MoodEntry moodEntry; // 1 seule humeur (synthétique) par activité
+    private boolean mood;
 
-    public Activity(MoodlyUser user, String name, Integer duration, LocalDate date, MoodEntry moodEntry) {
-        this.user = user;
+
+    public ActivitySummaryDto(String userEmail, String name, Integer duration, LocalDate date, boolean mood) {
+        this.userEmail = userEmail;
         this.name = name;
         this.duration = duration;
         this.date = date;
-        this.moodEntry = moodEntry;
+        this.mood = mood;
     }
 
-    public Activity() {
+    public ActivitySummaryDto() {
     }
 
     public Long getId() {
@@ -41,12 +36,12 @@ public class Activity {
         this.id = id;
     }
 
-    public MoodlyUser getUser() {
-        return user;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUser(MoodlyUser user) {
-        this.user = user;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getName() {
@@ -73,11 +68,11 @@ public class Activity {
         this.date = date;
     }
 
-    public MoodEntry getMoodEntry() {
-        return moodEntry;
+    public boolean isMood() {
+        return mood;
     }
 
-    public void setMoodEntry(MoodEntry moodEntry) {
-        this.moodEntry = moodEntry;
+    public void setMood(boolean mood) {
+        this.mood = mood;
     }
 }
